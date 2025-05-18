@@ -108,13 +108,13 @@ export function Footer() {
             <p className="text-gray-400 text-sm mb-4">
               Subscribe to our newsletter for web development tips and industry insights.
             </p>
-            <form className="flex gap-2">
+            <form className="flex flex-col sm:flex-row gap-2">
               <input
                 type="email"
                 placeholder="Your email"
                 className="flex-1 px-4 py-2 bg-[#1a1a1a] border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-[#30B4D8] focus:border-transparent transition-all"
               />
-              <Button variant="default">Subscribe</Button>
+              <Button variant="default" className="whitespace-nowrap">Subscribe</Button>
             </form>
           </div>
         </div>
