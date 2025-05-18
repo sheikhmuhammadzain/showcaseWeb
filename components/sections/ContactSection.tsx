@@ -109,7 +109,7 @@ export function ContactSection({ sectionRef }: ContactSectionProps) {
                   ></textarea>
                 </div>
 
-                <Button className="w-full bg-[#30B4D8] hover:bg-[#2A9FBF] text-black font-medium group">
+                <Button variant="default" className="w-full font-medium group">
                   Submit Request
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                 </Button>

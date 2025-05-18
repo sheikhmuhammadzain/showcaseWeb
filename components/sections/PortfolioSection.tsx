@@ -60,7 +60,7 @@ export function PortfolioSection({ sectionRef }: PortfolioSectionProps) {
         </div>
 
         <div className="text-center mt-12 reveal">
-          <Button variant="outline" className="border-gray-700 hover:bg-gray-800/50 hover:text-white group text-gray-300">
+          <Button variant="outline" className="group">
             View All Projects
             <ChevronRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
           </Button>

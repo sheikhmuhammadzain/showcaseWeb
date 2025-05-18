@@ -31,7 +31,7 @@ export function PortfolioCard({ title, category, image, description }: Portfolio
         <p className="text-gray-400 text-sm">{description}</p>
       </CardContent>
       <CardFooter>
-        <Button variant="outline" className="w-full border-gray-700/50 hover:bg-[#222222] hover:text-white group text-gray-300">
+        <Button variant="outline" className="w-full group">
           View Project
           <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
         </Button>

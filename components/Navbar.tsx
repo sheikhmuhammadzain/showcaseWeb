@@ -54,7 +54,7 @@ export function Navbar({ activeSection, scrollY }: NavbarProps) {
         </nav>
 
         <div className="flex items-center gap-4">
-          <Button className="bg-[#30B4D8] hover:bg-[#2A9FBF] text-black font-medium hidden md:flex">
+          <Button variant="default" className="font-medium hidden md:flex">
             Free Consultation
           </Button>
 
@@ -86,7 +86,7 @@ export function Navbar({ activeSection, scrollY }: NavbarProps) {
               <span className="capitalize">{item}</span>
             </Link>
           ))}
-          <Button className="bg-[#30B4D8] hover:bg-[#2A9FBF] text-black font-medium mt-2 w-full">
+          <Button variant="default" className="font-medium mt-2 w-full">
             Free Consultation
           </Button>
         </nav>

@@ -19,14 +19,14 @@ export function HeroSection() {
               Custom web solutions designed to elevate your brand, engage your audience, and drive business growth.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 reveal">
-              <Button size="lg" className="bg-[#30B4D8] hover:bg-[#2A9FBF] text-black font-medium group">
+              <Button size="lg" variant="default" className="font-medium group">
                 Get Free Consultation
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
               </Button>
               <Button
                 size="lg"
                 variant="outline"
-                className="border-gray-700 hover:bg-gray-800/50 transition-colors text-gray-300 hover:text-white"
+                className="transition-colors"
               >
                 View Our Work
               </Button>

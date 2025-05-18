@@ -71,9 +71,8 @@ export function ServiceCard({
       </CardContent>
       <CardFooter>
         <Button
-          className={`w-full group ${
-            highlighted ? "bg-[#30B4D8] hover:bg-[#2A9FBF] text-black" : "bg-[#222222] hover:bg-[#2f2f2f] text-white"
-          }`}
+          variant={highlighted ? "default" : "secondary"}
+          className="w-full group"
         >
           Get Started
           <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />

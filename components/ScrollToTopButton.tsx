@@ -6,7 +6,7 @@ export function ScrollToTopButton({ scrollY }: ScrollToTopButtonProps) {
   return (
     <button
       onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-      className={`fixed bottom-6 right-6 p-3 rounded-full bg-[#30B4D8] text-black transition-all duration-300 ${
+      className={`fixed bottom-6 right-6 p-3 rounded-full bg-[#30B4D8] text-black transition-all duration-300 hover:bg-[#2A9FBF] ${
         scrollY > 300 ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10 pointer-events-none"
       }`}
       aria-label="Scroll to top"
