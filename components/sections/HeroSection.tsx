@@ -10,17 +10,17 @@ export function HeroSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div>
             <Badge className="mb-4 bg-[#30B4D8]/10 text-[#30B4D8] hover:bg-[#30B4D8]/10 reveal">
-              Professional Web Development
+              The Premier Web Showcase
             </Badge>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight font-heading reveal">
-              Transforming Ideas Into <span className="text-[#30B4D8]">Digital Excellence</span>
+              Discover Excellence: Your Platform for <span className="text-[#30B4D8]">Exceptional Websites</span>
             </h1>
             <p className="text-lg text-gray-300 mb-8 max-w-lg reveal">
-              Custom web solutions designed to elevate your brand, engage your audience, and drive business growth.
+              Showcasing the web's finest. We connect innovative creators with businesses and individuals seeking top-tier digital experiences and talent.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 reveal">
               <Button size="lg" variant="default" className="font-medium group">
-                Get Free Consultation
+                Explore Showcased Sites
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
               </Button>
               <Button
@@ -28,7 +28,7 @@ export function HeroSection() {
                 variant="outline"
                 className="transition-colors"
               >
-                View Our Work
+                List Your Project
               </Button>
             </div>
             <div className="flex items-center mt-8 gap-4 reveal">
@@ -44,7 +44,7 @@ export function HeroSection() {
               </div>
               <div>
                 <p className="text-sm text-gray-300">
-                  Trusted by <span className="text-white font-medium">100+</span> businesses
+                  Join a <span className="text-white font-medium">Community of Excellence</span>
                 </p>
               </div>
             </div>
