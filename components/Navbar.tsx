@@ -71,7 +71,7 @@ export function Navbar({ activeSection, scrollY }: NavbarProps) {
 
       {/* Mobile Navigation */}
       <div
-        className={`md:hidden absolute w-full bg-[#222222]/95 backdrop-blur-md transition-all duration-300 ease-in-out overflow-hidden ${
+        className={`md:hidden fixed left-0 right-0 w-full bg-[#222222]/95 backdrop-blur-md transition-all duration-300 ease-in-out overflow-hidden ${
           isMenuOpen ? "max-h-[400px] border-b border-gray-800/50" : "max-h-0"
         }`}
       >

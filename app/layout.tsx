@@ -20,7 +20,12 @@ export const metadata = {
   icons: {
     icon: "/favicon.ico",
   },
-    generator: 'v0.dev'
+  generator: 'v0.dev',
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 1,
+  }
 }
 
 export default function RootLayout({
@@ -29,8 +34,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${inter.variable} ${montserrat.variable}`}>
-      <body className="min-h-screen bg-black font-sans antialiased">
+    <html lang="en" suppressHydrationWarning className={`${inter.variable} ${montserrat.variable} scroll-smooth`}>
+      <body className="min-h-screen bg-black font-sans antialiased overflow-x-hidden">
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
           {children}
         </ThemeProvider>

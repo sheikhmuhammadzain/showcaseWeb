@@ -53,8 +53,14 @@
   * {
     @apply border-border;
   }
+  html, body {
+    @apply overflow-x-hidden;
+    width: 100%;
+    max-width: 100%;
+  }
   body {
     @apply bg-background text-foreground;
+    position: relative;
   }
 }
 
@@ -134,4 +140,45 @@ h3 {
 /* Enhance button hover effects */
 .btn-hover-effect::after {
   display: none;
+}
+
+/* Fix mobile overflow */
+.container {
+  width: 100%;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+@media (min-width: 640px) {
+  .container {
+    max-width: 640px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1024px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .container {
+    max-width: 1536px;
+  }
 }
