@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -11,12 +11,29 @@ interface NavbarProps {
 
 export function Navbar({ activeSection, scrollY }: NavbarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const lastScrollYRef = useRef(0);
+  const [isNavbarVisible, setIsNavbarVisible] = useState(true);
+
+  useEffect(() => {
+    const currentScrollY = scrollY;
+    const prevScroll = lastScrollYRef.current;
+    const hideThreshold = 100; // Start hiding/showing behavior after scrolling down this much.
+    const scrollDelta = 5;     // Minimum change in scroll to detect direction.
+
+    if (currentScrollY <= hideThreshold / 2) { 
+      setIsNavbarVisible(true);
+    } else if (currentScrollY > prevScroll + scrollDelta && currentScrollY > hideThreshold) { // Scrolling down and past threshold
+      setIsNavbarVisible(false);
+    } else if (currentScrollY < prevScroll - scrollDelta) { // Scrolling up
+      setIsNavbarVisible(true);
+    }
+
+    lastScrollYRef.current = currentScrollY;
+  }, [scrollY]);
 
   return (
     <header
-      className={`sticky top-0 z-50 w-full border-b border-gray-800/50 backdrop-blur supports-[backdrop-filter]:bg-[#222222]/60 transition-all duration-300 ${
-        scrollY > 50 ? "py-2" : "py-4"
-      }`}
+      className={`fixed top-0 z-50 w-full border-b border-gray-800/50 backdrop-blur supports-[backdrop-filter]:bg-[#222222]/60 transition-transform duration-300 ease-in-out py-4 ${isNavbarVisible ? "translate-y-0" : "-translate-y-full"}`}
     >
       <div className="container flex items-center justify-between">
         <div className="flex items-center gap-2">

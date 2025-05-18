@@ -87,7 +87,7 @@ export default function Home() {
     <div className="flex flex-col min-h-screen bg-[#222222] text-white">
       <Navbar activeSection={activeSection} scrollY={scrollY} />
       
-      <main className="flex-1">
+      <main className="flex-1 pt-[73px]">
         <HeroSection />
         <ServicesSection sectionRef={sectionRefs.services} />
         <PortfolioSection sectionRef={sectionRefs.portfolio} />
