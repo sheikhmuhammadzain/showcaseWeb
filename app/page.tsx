@@ -5,7 +5,6 @@ import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Badge } from "@/components/ui/badge"
 import {
   CheckCircle,
@@ -23,7 +22,7 @@ import {
   Menu,
   X,
 } from "lucide-react"
-import { useState } from "react"
+import { useState, ReactNode } from "react"
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -202,7 +201,7 @@ export default function Home() {
                   <Button
                     size="lg"
                     variant="outline"
-                    className="border-gray-700 hover:bg-gray-800/50 transition-colors"
+                    className="border-gray-700 hover:bg-gray-800/50 transition-colors text-gray-800 hover:text-white"
                   >
                     View Our Work
                   </Button>
@@ -359,7 +358,7 @@ export default function Home() {
             </div>
 
             <div className="text-center mt-12 reveal">
-              <Button variant="outline" className="border-gray-700 hover:bg-gray-800/50 group">
+              <Button variant="outline" className="border-gray-700 hover:bg-gray-800/50 hover:text-white group text-gray-300 text-gray-800 hover:text-white">
                 View All Projects
                 <ChevronRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
               </Button>
@@ -723,33 +722,44 @@ export default function Home() {
   )
 }
 
+interface ServiceCardProps {
+  title: string;
+  price: string;
+  description: string;
+  features: string[];
+  turnaround: string;
+  maintenance: string;
+  icon: ReactNode;
+  highlighted?: boolean;
+}
+
 // Component for Service Cards
-function ServiceCard({ title, price, description, features, turnaround, maintenance, icon, highlighted = false }) {
+function ServiceCard({ title, price, description, features, turnaround, maintenance, icon, highlighted = false }: ServiceCardProps) {
   return (
     <Card
       className={`h-full transition-all duration-300 ${
-        highlighted ? "border-[#30B4D8] bg-[#222222]" : "bg-[#222222] border-gray-800/50 hover:border-gray-700"
+        highlighted ? "border-[#30B4D8] bg-[#222222]" : "bg-[#1a1a1a] border-gray-700/50 hover:border-gray-600"
       }`}
     >
       <CardHeader>
         <div className="flex justify-between items-start">
-          <div className={`p-3 rounded-lg ${highlighted ? "bg-[#30B4D8]/10" : "bg-[#1a1a1a]"}`}>{icon}</div>
+          <div className={`p-3 rounded-lg ${highlighted ? "bg-[#30B4D8]/10" : "bg-[#222222]"}`}>{icon}</div>
           {highlighted && <Badge className="bg-[#30B4D8] text-black hover:bg-[#30B4D8]">Popular</Badge>}
         </div>
-        <CardTitle className="mt-4">{title}</CardTitle>
+        <CardTitle className="mt-4 text-white">{title}</CardTitle>
         <div className="mt-2">
-          <span className="text-3xl font-bold">{price}</span>
+          <span className="text-3xl font-bold text-white">{price}</span>
         </div>
-        <CardDescription className="mt-2">{description}</CardDescription>
+        <CardDescription className={`mt-2 ${highlighted ? "text-gray-300" : "text-gray-400"}`}>{description}</CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
         <div>
-          <h4 className="text-sm font-medium mb-2">Key Features</h4>
+          <h4 className="text-sm font-medium mb-2 text-white">Key Features</h4>
           <ul className="space-y-2">
-            {features.map((feature, index) => (
+            {features.map((feature: string, index: number) => (
               <li key={index} className="flex items-start gap-2">
                 <CheckCircle className="h-5 w-5 text-[#30B4D8] shrink-0 mt-0.5" />
-                <span className="text-gray-300 text-sm">{feature}</span>
+                <span className={`text-sm ${highlighted ? "text-gray-300" : "text-gray-400"}`}>{feature}</span>
               </li>
             ))}
           </ul>
@@ -757,23 +767,23 @@ function ServiceCard({ title, price, description, features, turnaround, maintena
         <div className="pt-4 border-t border-gray-800/50">
           <div className="flex items-center gap-2 mb-2">
             <Clock className="h-4 w-4 text-[#30B4D8]" />
-            <span className="text-sm font-medium">Turnaround Time</span>
+            <span className="text-sm font-medium text-white">Turnaround Time</span>
           </div>
-          <p className="text-gray-400 text-sm">{turnaround}</p>
+          <p className={`text-sm ${highlighted ? "text-gray-300" : "text-gray-400"}`}>{turnaround}</p>
         </div>
         <div className="pt-2">
           <div className="flex items-center gap-2 mb-2">
             <Zap className="h-4 w-4 text-[#30B4D8]" />
-            <span className="text-sm font-medium">Maintenance</span>
+            <span className="text-sm font-medium text-white">Maintenance</span>
           </div>
-          <p className="text-gray-400 text-sm">{maintenance}</p>
+          <p className={`text-sm ${highlighted ? "text-gray-300" : "text-gray-400"}`}>{maintenance}</p>
         </div>
       </CardContent>
       <CardFooter>
         <Button
-          className={`w-full ${
-            highlighted ? "bg-[#30B4D8] hover:bg-[#2A9FBF] text-black" : "bg-[#1a1a1a] hover:bg-gray-800"
-          } group`}
+          className={`w-full group ${
+            highlighted ? "bg-[#30B4D8] hover:bg-[#2A9FBF] text-black" : "bg-[#222222] hover:bg-[#2f2f2f] text-white"
+          }`}
         >
           Get Started
           <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
@@ -783,8 +793,15 @@ function ServiceCard({ title, price, description, features, turnaround, maintena
   )
 }
 
+interface PortfolioCardProps {
+  title: string;
+  category: string;
+  image: string;
+  description: string;
+}
+
 // Component for Portfolio Cards
-function PortfolioCard({ title, category, image, description }) {
+function PortfolioCard({ title, category, image, description }: PortfolioCardProps) {
   return (
     <Card className="bg-[#1a1a1a] border-gray-800/50 overflow-hidden group transition-all duration-300 hover:border-gray-700">
       <div className="relative h-48 overflow-hidden">
@@ -800,11 +817,11 @@ function PortfolioCard({ title, category, image, description }) {
         </div>
       </div>
       <CardContent className="pt-4">
-        <h3 className="font-medium text-lg mb-2">{title}</h3>
+        <h3 className="font-medium text-lg mb-2 text-white">{title}</h3>
         <p className="text-gray-400 text-sm">{description}</p>
       </CardContent>
       <CardFooter>
-        <Button variant="outline" className="w-full border-gray-700/50 hover:bg-[#222222] group">
+        <Button variant="outline" className="w-full border-gray-700/50 hover:bg-[#222222] hover:text-white group text-gray-800 hover:text-white">
           View Project
           <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
         </Button>
@@ -813,8 +830,16 @@ function PortfolioCard({ title, category, image, description }) {
   )
 }
 
+interface ProcessStepProps {
+  number: string;
+  title: string;
+  description: string;
+  deliverables: string[];
+  icon: ReactNode;
+}
+
 // Component for Process Steps
-function ProcessStep({ number, title, description, deliverables, icon }) {
+function ProcessStep({ number, title, description, deliverables, icon }: ProcessStepProps) {
   return (
     <div className="bg-[#222222] p-6 rounded-lg border border-gray-800/50 transition-all duration-300 hover:border-gray-700 reveal">
       <div className="flex items-center gap-4 mb-4">
@@ -831,7 +856,7 @@ function ProcessStep({ number, title, description, deliverables, icon }) {
           Deliverables
         </h4>
         <ul className="space-y-1 pl-6 text-gray-400 text-sm list-disc">
-          {deliverables.map((item, index) => (
+          {deliverables.map((item: string, index: number) => (
             <li key={index}>{item}</li>
           ))}
         </ul>
@@ -840,8 +865,15 @@ function ProcessStep({ number, title, description, deliverables, icon }) {
   )
 }
 
+interface TestimonialCardProps {
+  quote: string;
+  name: string;
+  company: string;
+  image: string;
+}
+
 // Component for Testimonial Cards
-function TestimonialCard({ quote, name, company, image }) {
+function TestimonialCard({ quote, name, company, image }: TestimonialCardProps) {
   return (
     <Card className="bg-[#1a1a1a] border-gray-800/50 transition-all duration-300 hover:border-gray-700">
       <CardContent className="pt-6">
